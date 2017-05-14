@@ -51,8 +51,7 @@ namespace Trailr.Controllers
         public async Task<ActionResult> Register(UserAccount account)
         {
             string hashed = pcrypter.CryptPassword(account.Password);
-            var userCollection = mongoDatabase.Database.GetCollection<UserAccount>("users");
-            await userCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
+            await mongoDatabase.UserCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
 
             List<UserAccount> listaUsera = await GetUsers();
             ViewBag.Users = listaUsera;
@@ -62,8 +61,8 @@ namespace Trailr.Controllers
 
         public async Task< List<UserAccount> > GetUsers()
         {
-            var userCollection = mongoDatabase.Database.GetCollection<UserAccount>("users");
-            var usrs = await userCollection.Find(_ => true).ToListAsync();
+            
+            var usrs = await mongoDatabase.UserCollection.Find(_ => true).ToListAsync();
             return usrs;
         }
 
