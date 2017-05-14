@@ -17,14 +17,18 @@ namespace Trailr.Controllers
         PasswordCrypter pcrypter = new PasswordCrypter();
         MongoDatabaseCustom mongoDatabase = new MongoDatabaseCustom("mongodb://localhost","trailr");
         // GET: Account
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            List<UserAccount> listaUsera = await GetUsers();
+            ViewBag.Users = listaUsera;
             return View("Login");
         }
         
         // GET: Account/Login
-        public ActionResult Login()
+        public async Task<ActionResult> Login()
         {
+            List<UserAccount> listaUsera = await GetUsers();
+            ViewBag.Users = listaUsera;
             return View();
         }
 
@@ -43,15 +47,24 @@ namespace Trailr.Controllers
 
         // POST: Account/Register
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(UserAccount account)
         {
             string hashed = pcrypter.CryptPassword(account.Password);
+            var userCollection = mongoDatabase.Database.GetCollection<UserAccount>("users");
+            await userCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
 
-            var collection = mongoDatabase.Database.GetCollection<UserAccount>("users");
-
-            await collection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
+            List<UserAccount> listaUsera = await GetUsers();
+            ViewBag.Users = listaUsera;
 
             return View("Login");
+        }
+
+        public async Task< List<UserAccount> > GetUsers()
+        {
+            var userCollection = mongoDatabase.Database.GetCollection<UserAccount>("users");
+            var usrs = await userCollection.Find(_ => true).ToListAsync();
+            return usrs;
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Trailr.Models;
 
 namespace Trailr.Helpers
 {
@@ -11,6 +12,8 @@ namespace Trailr.Helpers
     {
         public MongoClient Client { get; set; }
         public IMongoDatabase Database { get; set; }
+
+        //ovde kako bude rasla baza, imace sve kolekcije
 
         public MongoDatabaseCustom() { }
 

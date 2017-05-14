@@ -4,3 +4,13 @@
     ViewBag.Title = "Login";
 }
 <h1>Login page.</h1>
+@if (ViewBag.Users != null)
+{
+    foreach (var item in ViewBag.Users)
+    {
+        <h3>@item.Username</h3>
+    }
+} else
+{
+    <h1>Null je</h1>
+}
