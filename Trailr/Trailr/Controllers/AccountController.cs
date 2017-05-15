@@ -20,12 +20,20 @@ namespace Trailr.Controllers
         // GET: Account
         public ActionResult Index()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
             return View("Login");
         }
         
         // GET: Account/Login
         public ActionResult Login()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
             return View();
         }
 
@@ -68,6 +76,10 @@ namespace Trailr.Controllers
         // GET: Account/Register
         public ActionResult Register()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
             return View();
         }
 
