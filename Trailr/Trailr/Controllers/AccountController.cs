@@ -41,7 +41,7 @@ namespace Trailr.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(UserAccount account)
         {
-            var user = await GetUser(account.Email);
+            var user = await mongoDatabase.GetUser(account.Email);
             if (user == null)
             {
                 // baci ga na view da ne postoji taj user
@@ -55,7 +55,7 @@ namespace Trailr.Controllers
                 {
                     // ok
                     FormsAuthentication.SetAuthCookie(account.Email,false);
-                    UserAccount loggedUser = await GetUser(account.Email);
+                    UserAccount loggedUser = await mongoDatabase.GetUser(account.Email);
                     Session["user"] = loggedUser;
                     return RedirectToAction("Index","Dashboard");
                 }
@@ -98,27 +98,7 @@ namespace Trailr.Controllers
             return RedirectToAction("Login");
         }
 
-        public async Task< List<UserAccount> > GetUsers()
-        {
-            var usrs = await mongoDatabase.UserCollection.Find(_ => true).ToListAsync();
-            return usrs;
-        }
-
-        public async Task<UserAccount> GetUser(string email)
-        {
-            UserAccount user = null;
-            try
-            {
-                user = await mongoDatabase.UserCollection.Find(u => u.Email == email).SingleAsync();
-            }
-            catch (Exception)
-            {
-                user = null;
-            }
-            
-            return user;
-
-        }
+        
 
     }
 }

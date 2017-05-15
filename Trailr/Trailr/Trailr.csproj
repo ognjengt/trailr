@@ -195,6 +195,8 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="public\scss\main.scss" />
+    <Content Include="public\scss\fixes\navbarFix.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -204,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="public\scss\" />
+    <Folder Include="public\scss\components\" />
     <Folder Include="SPA\Views\" />
   </ItemGroup>
   <PropertyGroup>

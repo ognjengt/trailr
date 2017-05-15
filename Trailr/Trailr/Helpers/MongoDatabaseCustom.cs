@@ -5,6 +5,7 @@ using System.Web;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Trailr.Models;
+using System.Threading.Tasks;
 
 namespace Trailr.Helpers
 {
@@ -23,6 +24,28 @@ namespace Trailr.Helpers
             this.Client = new MongoClient(address);
             this.Database = Client.GetDatabase(dbName);
             this.UserCollection = Database.GetCollection<UserAccount>("users");
+        }
+
+        public async Task<List<UserAccount>> GetUsers()
+        {
+            var usrs = await UserCollection.Find(_ => true).ToListAsync();
+            return usrs;
+        }
+
+        public async Task<UserAccount> GetUser(string email)
+        {
+            UserAccount user = null;
+            try
+            {
+                user = await UserCollection.Find(u => u.Email == email).SingleAsync();
+            }
+            catch (Exception)
+            {
+                user = null;
+            }
+
+            return user;
+
         }
     }
 }
