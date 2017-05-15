@@ -3,14 +3,21 @@
     Layout = "~/Views/Shared/Layout.cshtml";
     ViewBag.Title = "Login";
 }
-<h1>Login page.</h1>
-@if (ViewBag.Users != null)
+
+@model Trailr.Models.UserAccount
+<h1>Login</h1>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
-    foreach (var item in ViewBag.Users)
-    {
-        <h3>@item.Username</h3>
-    }
-} else
-{
-    <h1>Null je</h1>
+    @Html.AntiForgeryToken()
+
+
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email)<br />
+
+    @Html.LabelFor(model => model.Password)
+    @Html.PasswordFor(model => model.Password)<br />
+
+    <button type="submit">Log in</button>
 }
+@ViewBag.ValidationMessage

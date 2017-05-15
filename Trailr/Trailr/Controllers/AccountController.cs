@@ -17,26 +17,43 @@ namespace Trailr.Controllers
         PasswordCrypter pcrypter = new PasswordCrypter();
         MongoDatabaseCustom mongoDatabase = new MongoDatabaseCustom("mongodb://localhost","trailr");
         // GET: Account
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            List<UserAccount> listaUsera = await GetUsers();
-            ViewBag.Users = listaUsera;
             return View("Login");
         }
         
         // GET: Account/Login
-        public async Task<ActionResult> Login()
+        public ActionResult Login()
         {
-            List<UserAccount> listaUsera = await GetUsers();
-            ViewBag.Users = listaUsera;
             return View();
         }
 
         // POST: Account/Login
         [HttpPost]
-        public string LoginUser()
+        public async Task<ActionResult> Login(UserAccount account)
         {
-            return "logged?";
+            var user = await GetUser(account.Email);
+            if (user == null)
+            {
+                // baci ga na view da ne postoji taj user
+                ViewBag.ValidationMessage = "Ne postoji user";
+                return View("Login");
+            }
+            else
+            {
+                // check pass
+                if (pcrypter.ValidatePassword(account.Password,user.Password))
+                {
+                    // ok
+                    return RedirectToAction("Index","Dashboard");
+                }
+                else
+                {
+                    // nije dobar pass
+                    ViewBag.ValidationMessage = "Nije dobar pass";
+                    return View("Login");
+                }
+            }
         }
 
         // GET: Account/Register
@@ -50,20 +67,34 @@ namespace Trailr.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(UserAccount account)
         {
+            // ovde provere...
+
             string hashed = pcrypter.CryptPassword(account.Password);
             await mongoDatabase.UserCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
 
-            List<UserAccount> listaUsera = await GetUsers();
-            ViewBag.Users = listaUsera;
-
-            return View("Login");
+            return RedirectToAction("Login");
         }
 
         public async Task< List<UserAccount> > GetUsers()
         {
-            
             var usrs = await mongoDatabase.UserCollection.Find(_ => true).ToListAsync();
             return usrs;
+        }
+
+        public async Task<UserAccount> GetUser(string email)
+        {
+            UserAccount user = null;
+            try
+            {
+                user = await mongoDatabase.UserCollection.Find(u => u.Email == email).SingleAsync();
+            }
+            catch (Exception)
+            {
+                user = null;
+            }
+            
+            return user;
+
         }
 
     }
