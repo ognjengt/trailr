@@ -1,5 +1,5 @@
 ﻿var MainController = function ($scope) {
-    $scope.myVariable = "Hello world from Angular!";
+     $scope.varijabla = "Ajmooo kesuuuj";
 }
 
 MainController.$inject = ['$scope'];

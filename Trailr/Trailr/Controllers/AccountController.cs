@@ -55,6 +55,8 @@ namespace Trailr.Controllers
                 {
                     // ok
                     FormsAuthentication.SetAuthCookie(account.Email,false);
+                    UserAccount loggedUser = await GetUser(account.Email);
+                    Session["user"] = loggedUser;
                     return RedirectToAction("Index","Dashboard");
                 }
                 else

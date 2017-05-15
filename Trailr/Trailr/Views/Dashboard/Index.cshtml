@@ -1,9 +1,13 @@
-﻿
+﻿@using Trailr.Models
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@{ UserAccount user = (UserAccount)Session["user"];}
+<div ng-app="App" ng-controller="MainController">
+    <h2>Dashboard</h2>
+    <p>Welcome @user.Username</p>
+    {{myVariable}}
+</div>
 
-<h2>Dashboard</h2>
-<p>Ulogovan si.</p>
 
