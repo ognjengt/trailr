@@ -9,6 +9,7 @@ using Trailr.Helpers;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Threading.Tasks;
+using System.Web.Security;
 
 namespace Trailr.Controllers
 {
@@ -45,6 +46,7 @@ namespace Trailr.Controllers
                 if (pcrypter.ValidatePassword(account.Password,user.Password))
                 {
                     // ok
+                    FormsAuthentication.SetAuthCookie(account.Email,false);
                     return RedirectToAction("Index","Dashboard");
                 }
                 else
@@ -54,6 +56,13 @@ namespace Trailr.Controllers
                     return View("Login");
                 }
             }
+        }
+
+        // GET: Account/LogOut
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return View("Login");
         }
 
         // GET: Account/Register

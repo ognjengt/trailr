@@ -9,6 +9,7 @@ namespace Trailr.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
+        [Authorize]
         public ActionResult Index()
         {
             return View();
