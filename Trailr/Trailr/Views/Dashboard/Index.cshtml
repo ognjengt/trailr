@@ -3,7 +3,6 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-@{ UserAccount user = (UserAccount)Session["user"];}
 <div ng-app="App" ng-controller="MainController">
     <!--Nav bar-->
     <nav class="navbar navbar-default">
@@ -22,21 +21,23 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">Projects <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Drugi</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">@user.Email</a></li>
+                    <li><a href="#">@Session["userEmail"]</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
+    <div class="container-fluid">
+        <h2>Dashboard</h2>
+        <p>Welcome @Session["userEmail"]</p>
+        <a href="/Dashboard/Project/1">linkekkk</a>
+    </div>
+    
 
-
-    <h2>Dashboard</h2>
-    <p>Welcome @user.Username</p>
-    {{myVariable}}
 </div>
 
 

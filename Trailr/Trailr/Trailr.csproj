@@ -160,6 +160,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="public\css\bootstrap.min.css" />
+    <Content Include="public\css\main.css" />
     <Content Include="public\js\angular-route.min.js" />
     <Content Include="public\js\angular.min.js" />
     <Content Include="public\js\bootstrap.min.js" />
@@ -197,6 +198,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="public\scss\main.scss" />
     <Content Include="public\scss\fixes\navbarFix.scss" />
+    <Content Include="public\scss\variables.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

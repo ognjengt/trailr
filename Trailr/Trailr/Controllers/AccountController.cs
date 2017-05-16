@@ -54,9 +54,9 @@ namespace Trailr.Controllers
                 if (pcrypter.ValidatePassword(account.Password,user.Password))
                 {
                     // ok
-                    FormsAuthentication.SetAuthCookie(account.Email,false);
-                    UserAccount loggedUser = await mongoDatabase.GetUser(account.Email);
-                    Session["user"] = loggedUser;
+                    FormsAuthentication.SetAuthCookie("loggedIn",false);
+                    Response.SetCookie(new HttpCookie("userEmail", account.Email));
+                    Session["userEmail"] = account.Email;
                     return RedirectToAction("Index","Dashboard");
                 }
                 else

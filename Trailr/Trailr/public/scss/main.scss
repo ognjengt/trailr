@@ -1,1 +1,6 @@
-﻿@import "fixes/navbarFix.scss";
+﻿@import "variables.scss";
+@import "fixes/navbarFix.scss";
+
+*{
+    font-family: 'Montserrat', sans-serif !important;
+}
