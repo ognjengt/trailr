@@ -3,6 +3,9 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+@{ 
+    var user = (UserAccount)Session["user"];
+}
 <div ng-app="App" ng-controller="MainController">
     <!--Nav bar-->
     <nav class="navbar navbar-default">
@@ -25,7 +28,8 @@
                     <li><a href="#">Drugi</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">@Session["userEmail"]</a></li>
+                    <li><a href="#">@user.FullName</a></li>
+                    <li><a href="/Account/LogOut">Logout</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -33,7 +37,7 @@
 
     <div class="container-fluid">
         <h2>Dashboard</h2>
-        <p>Welcome @Session["userEmail"]</p>
+        <p>Welcome @user.Email</p>
         <a href="/Dashboard/Project/1">linkekkk</a>
     </div>
     

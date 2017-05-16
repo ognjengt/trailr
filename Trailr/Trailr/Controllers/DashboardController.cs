@@ -4,16 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using MongoDB;
+using Trailr.Models;
+using Trailr.Helpers;
+using System.Threading.Tasks;
 
 namespace Trailr.Controllers
 {
     public class DashboardController : Controller
     {
+        MongoDatabaseCustom mongoDatabase = new MongoDatabaseCustom("mongodb://localhost", "trailr");
+
         // GET: Dashboard
         [Authorize]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            Session["userEmail"] = Request.Cookies["userEmail"].Value;
+            string userEmail = Request.Cookies["userEmail"].Value;
+            UserAccount user = await mongoDatabase.GetUser(userEmail);
+            Session["user"] = user;
             return View();
         }
 

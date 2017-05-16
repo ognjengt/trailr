@@ -56,7 +56,6 @@ namespace Trailr.Controllers
                     // ok
                     FormsAuthentication.SetAuthCookie("loggedIn",false);
                     Response.SetCookie(new HttpCookie("userEmail", account.Email));
-                    Session["userEmail"] = account.Email;
                     return RedirectToAction("Index","Dashboard");
                 }
                 else
@@ -93,7 +92,7 @@ namespace Trailr.Controllers
             // ovde provere...
 
             string hashed = pcrypter.CryptPassword(account.Password);
-            await mongoDatabase.UserCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, Password = hashed });
+            await mongoDatabase.UserCollection.InsertOneAsync(new UserAccount { Email = account.Email, Username = account.Username, FullName = account.FullName, Password = hashed });
 
             return RedirectToAction("Login");
         }
