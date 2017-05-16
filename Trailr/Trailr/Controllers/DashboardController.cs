@@ -19,10 +19,14 @@ namespace Trailr.Controllers
         [Authorize]
         public async Task<ActionResult> Index()
         {
-            string userEmail = Request.Cookies["userEmail"].Value;
-            UserAccount user = await mongoDatabase.GetUser(userEmail);
-            Session["user"] = user;
-            return View();
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                string userEmail = Request.Cookies["userEmail"].Value;
+                UserAccount user = await mongoDatabase.GetUser(userEmail);
+                Session["user"] = user;
+                return View();
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Project(int id)
