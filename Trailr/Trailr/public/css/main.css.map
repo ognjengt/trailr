@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,mOAAgN;EAC5M,UAAU,EAAE,UAAU;EACtB,gBAAgB,EAAE,sBAAsB;EACxC,aAAa,EAAE,iBAAe;EAC9B,KAAK,ECHF,OAAO;;ACEd,CAAC;EACG,WAAW,EAAE,mCAAmC",
+"mappings": "AAAA,mOAAgN;EAC5M,UAAU,EAAE,UAAU;EACtB,gBAAgB,EAAE,sBAAsB;EACxC,aAAa,EAAE,iBAAe;EAC9B,KAAK,ECHF,OAAO;;ADKd,eAAe;EACX,UAAU,EAAE,kBAAkB;;AAElC,OAAO;EACH,aAAa,EAAE,cAAc;;AEPjC,CAAC;EACG,WAAW,EAAE,mCAAmC",
 "sources": ["../scss/fixes/navbarFix.scss","../scss/variables.scss","../scss/main.scss"],
 "names": [],
 "file": "main.css"

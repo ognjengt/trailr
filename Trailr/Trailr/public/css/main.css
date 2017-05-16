@@ -4,6 +4,12 @@
   border-bottom: 3px solid #0058EB;
   color: #0058EB; }
 
+.navbar-default {
+  background: #fbfbfb !important; }
+
+.navbar {
+  border-radius: 0px !important; }
+
 * {
   font-family: 'Montserrat', sans-serif !important; }
 
