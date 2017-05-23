@@ -10,7 +10,24 @@
 .navbar {
   border-radius: 0px !important; }
 
+.project {
+  height: 200px;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #D5D5D5;
+  box-shadow: 0 2px 40px -20px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 40px -20px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s ease; }
+
+.project:hover {
+  background: #0058EB;
+  color: #fff; }
+
 * {
   font-family: 'Montserrat', sans-serif !important; }
+
+body {
+  background: #fff; }
 
 /*# sourceMappingURL=main.css.map */

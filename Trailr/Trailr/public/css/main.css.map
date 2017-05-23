@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,mOAAgN;EAC5M,UAAU,EAAE,UAAU;EACtB,gBAAgB,EAAE,sBAAsB;EACxC,aAAa,EAAE,iBAAe;EAC9B,KAAK,ECHF,OAAO;;ADKd,eAAe;EACX,UAAU,EAAE,kBAAkB;;AAElC,OAAO;EACH,aAAa,EAAE,cAAc;;AEPjC,CAAC;EACG,WAAW,EAAE,mCAAmC",
-"sources": ["../scss/fixes/navbarFix.scss","../scss/variables.scss","../scss/main.scss"],
+"mappings": "AAAA,mOAAgN;EAC5M,UAAU,EAAE,UAAU;EACtB,gBAAgB,EAAE,sBAAsB;EACxC,aAAa,EAAE,iBAAe;EAC9B,KAAK,ECHF,OAAO;;ADKd,eAAe;EACX,UAAU,EAAE,kBAAkB;;AAElC,OAAO;EACH,aAAa,EAAE,cAAc;;AEVjC,QAAQ;EACN,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,mBAAmB;EAC5B,MAAM,EAAE,iBAAiB;EACzB,UAAU,EAAE,mCAAmC;EAC/C,kBAAkB,EAAE,mCAAmC;EACvD,aAAa,EAAE,GAAG;EAClB,MAAM,EAAE,OAAO;EACf,UAAU,EAAE,SAAS;;AAEvB,cAAc;EACZ,UAAU,EDVL,OAAO;ECWZ,KAAK,EAAE,IAAI;;ACRb,CAAC;EACG,WAAW,EAAE,mCAAmC;;AAEpD,IAAI;EACF,UAAU,EAAE,IAAI",
+"sources": ["../scss/fixes/navbarFix.scss","../scss/variables.scss","../scss/components/_dashboard.scss","../scss/main.scss"],
 "names": [],
 "file": "main.css"
 }

@@ -1,6 +1,10 @@
 ﻿@import "variables.scss";
 @import "fixes/navbarFix.scss";
+@import "components/dashboard";
 
 *{
     font-family: 'Montserrat', sans-serif !important;
+}
+body{
+  background: #fff;
 }
