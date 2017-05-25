@@ -1,11 +1,25 @@
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
   transition: 0.15s ease;
   background-color: transparent !important;
-  border-bottom: 3px solid #0058EB;
-  color: #0058EB; }
+  border-bottom: 3px solid #6E8BFF;
+  color: #6E8BFF; }
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+  color: #C9C5DC; }
+
+.navbar-default .navbar-brand:hover {
+  color: #6E8BFF; }
 
 .navbar-default {
-  background: #fbfbfb !important; }
+  background: #363558;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #363558 0%, #41406b 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #363558 0%, #41406b 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #363558 0%, #41406b 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  border: none !important; }
 
 .navbar {
   border-radius: 0px !important; }
@@ -13,21 +27,36 @@
 .project {
   height: 200px;
   padding: 10px 20px 10px 20px;
-  border: 1px solid #D5D5D5;
-  box-shadow: 0 2px 40px -20px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 2px 40px -20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2D2F4D;
+  box-shadow: 0 5px 40px -20px rgba(28, 31, 50, 0.5);
+  -webkit-box-shadow: 0 5px 40px -20px rgba(28, 31, 50, 0.5);
   border-radius: 3px;
   cursor: pointer;
-  transition: 0.2s ease; }
+  transition: 0.2s ease;
+  margin-top: 20px;
+  background: #2F2F4E; }
 
 .project:hover {
-  background: #0058EB;
+  background: #3b62ff;
   color: #fff; }
+
+.btn-classic {
+  border: 2px solid #6E8BFF;
+  background: transparent !important;
+  color: #DCD7EC;
+  border-radius: 100px;
+  transition: 0.18s ease; }
+
+.btn-classic:hover {
+  border: 2px solid #6E8BFF;
+  background: #6E8BFF !important;
+  color: #DCD7EC; }
 
 * {
   font-family: 'Montserrat', sans-serif !important; }
 
 body {
-  background: #fff; }
+  background: #1D1E31;
+  color: #C9C5DC; }
 
 /*# sourceMappingURL=main.css.map */

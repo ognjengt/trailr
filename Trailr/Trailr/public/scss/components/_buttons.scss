@@ -1,0 +1,12 @@
+.btn-classic{
+  border: 2px solid $purple;
+  background: transparent !important;
+  color: #DCD7EC;
+  border-radius: 100px;
+  transition: 0.18s ease;
+}
+.btn-classic:hover{
+  border: 2px solid $purple;
+  background: $purple !important;
+  color: #DCD7EC;
+}
