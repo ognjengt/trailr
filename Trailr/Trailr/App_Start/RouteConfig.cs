@@ -18,6 +18,17 @@ namespace Trailr
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "App",
+                url: "{*url}",
+                defaults: new
+                {
+                    controller = "Dashboard",
+                    action = "Index"
+                }
+            );
+
         }
     }
 }

@@ -29,11 +29,9 @@ namespace Trailr.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult Project(int id)
+        public FilePathResult getIndex()
         {
-            // get project i baci ga na view
-            
-            return Content("id= " + id);
+            return File("~/SPA/Views/index.html", "text/html");
         }
     }
 }
