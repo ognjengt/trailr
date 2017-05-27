@@ -1,11 +1,6 @@
-﻿var MainController = function ($scope,$http) {
-    var html = "";
-    function loadIndex() {
-        $http.get("Dashboard/getIndex").then(function (response) {
-            $scope.index = response.data;
-        });
-    }
-    loadIndex();
+﻿var MainController = function ($scope) {
+    $scope.varijabla = "Ajmooo kesuuuj";
+    $scope.drugaVarijabla = "druga";
 }
 
-MainController.$inject = ['$scope', '$http'];
+MainController.$inject = ['$scope'];
