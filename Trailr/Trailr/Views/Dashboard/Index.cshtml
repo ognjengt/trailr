@@ -41,38 +41,18 @@
                 <h2>All projects</h2>
                 <div class="btn btn-default btn-classic"><b>Add new</b></div>
                 <div class="row projects-row">
-                    <div class="col-md-3">
+
+                    <div class="col-md-3" ng-repeat="pr in projects">
                         <div class="project">
                             <div class="card-header">
-                                <h4><b>Projekat batice</b></h4>
-                                <h2><b>01:05:24</b></h2>
+                                <h4><b>{{pr.Title}}</b></h4>
+                                <h2><b>{{pr.TimeSpent}}</b></h2>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="project">
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="project">
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="project">
-                            
-                        </div>
-                    </div>   
 
-                    <div class="col-md-3">
-                        <div class="project">
-                            
-                        </div>
-                    </div>
                 </div>      
             </div>
-
 
         </div>
         
