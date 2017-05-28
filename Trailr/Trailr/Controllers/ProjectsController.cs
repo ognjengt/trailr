@@ -7,35 +7,31 @@ using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Results;
 using Trailr.Models;
+using Trailr.Helpers;
+using Trailr.Controllers;
+using System.Threading.Tasks;
 
 namespace Trailr.Controllers
 {
     public class ProjectsController : ApiController
     {
         [ActionName("GetProjects")]
-        public IEnumerable<Project> GetProjects()
+        public async Task<IEnumerable<Project>> GetProjects()
         {
+            MongoDatabaseCustom database = new MongoDatabaseCustom("mongodb://localhost", "trailr");
             List<Project> povratna = new List<Project>();
-            Project p1 = new Project();
-            p1.DateCreated = DateTime.Now;
-            p1.Id = new MongoDB.Bson.ObjectId();
-            p1.TimeSpent = new TimeSpan(10, 15, 20);
-            p1.Title = "Test project 1";
-            p1.UserEmail = "ognjen";
 
-            Project p2 = new Project();
-            p2.DateCreated = DateTime.Now;
-            p2.Id = new MongoDB.Bson.ObjectId();
-            p2.TimeSpent = new TimeSpan(20, 2, 33);
-            p2.Title = "Drugi proj";
-            p2.UserEmail = "ognjen";
+            // Cisto da bi ubacio random element da vidim da li radi i radi.
+            //await database.ProjectCollection.InsertOneAsync(new Project { UserEmail = "ognjen@ognjen.com", DateCreated = DateTime.Now, TimeSpent = new TimeSpan(20,15,1), Title = "Jos jedan breee", Id = new MongoDB.Bson.ObjectId() });
 
-            povratna.Add(p1);
-            povratna.Add(p2);
+            // TODO: ovde nekako naci nacin da se prosledi email od trenutnog korisnika sa sesije
+            povratna = await database.GetProjects("ognjen@ognjen.com");
 
             return povratna;
 
 
-        } 
+        }
+
+
     }
 }

@@ -14,6 +14,7 @@ namespace Trailr.Helpers
         public MongoClient Client { get; set; }
         public IMongoDatabase Database { get; set; }
         public IMongoCollection<UserAccount> UserCollection { get; set; }
+        public IMongoCollection<Project> ProjectCollection { get; set; }
 
         //ovde kako bude rasla baza, imace sve kolekcije
 
@@ -24,6 +25,7 @@ namespace Trailr.Helpers
             this.Client = new MongoClient(address);
             this.Database = Client.GetDatabase(dbName);
             this.UserCollection = Database.GetCollection<UserAccount>("users");
+            this.ProjectCollection = Database.GetCollection<Project>("projects");
         }
 
         public async Task<List<UserAccount>> GetUsers()
@@ -46,6 +48,12 @@ namespace Trailr.Helpers
 
             return user;
 
+        }
+
+        public async Task<List<Project>> GetProjects(string email)
+        {
+            var projects = await ProjectCollection.Find(x => x.UserEmail == email).ToListAsync();
+            return projects;
         }
     }
 }
