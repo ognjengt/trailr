@@ -3,9 +3,12 @@
     $scope.drugaVarijabla = "druga";
     var userMail;
 
+    $scope.projects = localStorage.getItem('projects');
+
     function getProjects(email) {
         $http.get('/api/Projects/GetProjects/?email='+email).then(function(response) {
             $scope.projects = response.data;
+            localStorage.setItem('projects', JSON.stringify($scope.projects));
         })
     }
 
