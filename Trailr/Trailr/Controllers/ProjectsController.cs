@@ -10,13 +10,14 @@ using Trailr.Models;
 using Trailr.Helpers;
 using Trailr.Controllers;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace Trailr.Controllers
 {
     public class ProjectsController : ApiController
     {
         [ActionName("GetProjects")]
-        public async Task<IEnumerable<Project>> GetProjects()
+        public async Task<IEnumerable<Project>> GetProjects(string email)
         {
             MongoDatabaseCustom database = new MongoDatabaseCustom("mongodb://localhost", "trailr");
             List<Project> povratna = new List<Project>();
@@ -25,7 +26,7 @@ namespace Trailr.Controllers
             //await database.ProjectCollection.InsertOneAsync(new Project { UserEmail = "ognjen@ognjen.com", DateCreated = DateTime.Now, TimeSpent = new TimeSpan(20,15,1), Title = "Jos jedan breee", Id = new MongoDB.Bson.ObjectId() });
 
             // TODO: ovde nekako naci nacin da se prosledi email od trenutnog korisnika sa sesije
-            povratna = await database.GetProjects("ognjen@ognjen.com");
+            povratna = await database.GetProjects(email);
 
             return povratna;
 
