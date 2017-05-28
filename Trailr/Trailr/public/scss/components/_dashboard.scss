@@ -8,9 +8,10 @@
   cursor: pointer;
   transition: 0.2s ease;
   margin-top: 20px;
-  background: #2F2F4E;
+  background: -webkit-linear-gradient(top, #645CC3 0%,#6961D0 100%);
+  
 }
 .project:hover{
-  background: darken($purple,10);
+  background: -webkit-linear-gradient(top, #9289ff 0%,#8177f2 100%);
   color: #fff;
 }

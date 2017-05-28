@@ -29,11 +29,10 @@ namespace Trailr.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult Project(int id)
+        public string GetUserMail()
         {
-            // get project i baci ga na view
-            
-            return Content("id= " + id);
+            UserAccount currentUser = (UserAccount)Session["user"];
+            return currentUser.Email;
         }
     }
 }
