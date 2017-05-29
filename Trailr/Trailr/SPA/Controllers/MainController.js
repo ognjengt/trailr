@@ -23,6 +23,22 @@
     $scope.toggleAddPopup = function() {
         $scope.addPopupVisible = !$scope.addPopupVisible;
     }
+
+    $scope.addProject = function(){
+        var data = {
+           Title: $scope.projectTitleInput,
+           UserEmail: userMail
+        };
+        $http.post('/api/Projects/AddProject',JSON.stringify(data),{
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function(response) {
+                    // push to local storage
+                    $scope.projects = response.data;
+                    $scope.addPopupVisible = false;
+        })
+    }
     
 }
 

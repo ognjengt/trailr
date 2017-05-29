@@ -55,5 +55,12 @@ namespace Trailr.Helpers
             var projects = await ProjectCollection.Find(x => x.UserEmail == email).ToListAsync();
             return projects;
         }
+        
+        //Add project
+        public async Task<bool> AddProject(Project p)
+        {
+            await ProjectCollection.InsertOneAsync(p);
+            return true;
+        }
     }
 }

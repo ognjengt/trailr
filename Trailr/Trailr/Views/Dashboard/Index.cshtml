@@ -70,14 +70,12 @@
                 <b>Add new project</b>
             </div>
             <div class="popup-body">
-                <form action="" method="post">
                     <div class="form-group">
                         <label for="email">Project title</label>
-                        <input type="text" class="form-control" id="projectTitleInput">
+                        <input type="text" class="form-control" id="projectTitleInput" ng-model="projectTitleInput">
                     </div>
-                    <button type="submit" class="btn btn-default btn-classic"><b>Submit</b></button>
+                    <button type="submit" class="btn btn-default btn-classic" ng-click="addProject()"><b>Submit</b></button>
                     <button type="button" class="btn btn-default btn-classic" ng-click="addPopupVisible = !addPopupVisible"><b>Cancel</b></button>
-                </form>
             </div>
         </div>
     </div>
