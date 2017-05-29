@@ -34,5 +34,11 @@ namespace Trailr.Controllers
             UserAccount currentUser = (UserAccount)Session["user"];
             return currentUser.Email;
         }
+
+        public async Task<ActionResult> Project(string id)
+        {
+            ViewBag.ProjectId = id;
+            return View();
+        }
     }
 }

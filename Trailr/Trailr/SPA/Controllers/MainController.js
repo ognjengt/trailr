@@ -35,6 +35,8 @@
                     }
                 }).then(function(response) {
                     // push to local storage
+                    localStorage.setItem('projects', JSON.stringify(response.data));
+                    console.log(response.data);
                     $scope.projects = response.data;
                     $scope.addPopupVisible = false;
         })

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Project</h2>
+@{ 
+    string id;
+    try
+    {
+        id = Html.ViewContext.RouteData.Values["id"].ToString();
+        <p>id</p>
+    }
+    catch (Exception)
+    {
+
+        <p>Null je</p>
+    }
+}
+
