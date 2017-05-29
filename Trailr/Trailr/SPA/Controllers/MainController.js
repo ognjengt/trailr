@@ -1,6 +1,5 @@
 ﻿var MainController = function ($scope,$http) {
-    $scope.varijabla = "Ajmooo kesuuuj";
-    $scope.drugaVarijabla = "druga";
+    $scope.addPopupVisible = false;
     var userMail;
 
     $scope.projects = localStorage.getItem('projects');
@@ -20,6 +19,10 @@
     }
 
     getUserMail();
+
+    $scope.toggleAddPopup = function() {
+        $scope.addPopupVisible = !$scope.addPopupVisible;
+    }
     
 }
 

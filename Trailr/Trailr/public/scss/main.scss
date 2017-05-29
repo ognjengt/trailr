@@ -2,6 +2,7 @@
 @import "fixes/navbarFix.scss";
 @import "components/dashboard";
 @import "components/_buttons.scss";
+@import "components/_popups.scss";
 
 *{
     font-family: 'Montserrat', sans-serif !important;
@@ -9,4 +10,10 @@
 body{
   background: #1D1E31;
   color: #C9C5DC;
+}
+input{
+  box-shadow: none !important;
+  border: none !important;
+  background: lighten($purple,7) !important;
+  color: #fff !important
 }
