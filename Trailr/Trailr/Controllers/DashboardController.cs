@@ -35,10 +35,15 @@ namespace Trailr.Controllers
             return currentUser.Email;
         }
 
-        public async Task<ActionResult> Project(string id)
+        [Authorize]
+        public ActionResult Project(string id)
         {
-            ViewBag.ProjectId = id;
-            return View();
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                ViewBag.ProjectId = id;
+                return View();
+            }
+            return RedirectToAction("Login", "Account");
         }
     }
 }

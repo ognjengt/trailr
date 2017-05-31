@@ -17,21 +17,13 @@ namespace Trailr.Controllers
     public class ProjectsController : ApiController
     {
         MongoDatabaseCustom database = new MongoDatabaseCustom("mongodb://localhost", "trailr");
+
         [ActionName("GetProjects")]
         public async Task<IEnumerable<Project>> GetProjects(string email)
         {
-            
             List<Project> povratna = new List<Project>();
-
-            // Cisto da bi ubacio random element da vidim da li radi i radi.
-            //await database.ProjectCollection.InsertOneAsync(new Project { UserEmail = "ognjen@ognjen.com", DateCreated = DateTime.Now, TimeSpent = new TimeSpan(20,15,1), Title = "Jos jedan breee", Id = new MongoDB.Bson.ObjectId() });
-
-            // TODO: ovde nekako naci nacin da se prosledi email od trenutnog korisnika sa sesije
             povratna = await database.GetProjects(email);
-
             return povratna;
-
-
         }
 
         [HttpPost]
@@ -40,12 +32,16 @@ namespace Trailr.Controllers
         {
             Project p = new Project() { Title = prequest.Title, Id = new MongoDB.Bson.ObjectId(), DateCreated = DateTime.Now, TimeSpent = new TimeSpan(0, 0, 0), UserEmail = prequest.UserEmail };
             await database.AddProject(p);
-
             List<Project> povratna = await database.GetProjects(prequest.UserEmail);
-
             return povratna;
         }
 
+        [ActionName("GetProjectInfo")]
+        public async Task<Project> GetProjectInfo(string id)
+        {
+            Project p = await database.GetProject(id);
+            return p;
+        }
 
     }
 }

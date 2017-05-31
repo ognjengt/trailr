@@ -18,6 +18,7 @@
         })
     }
 
+    // On init
     getUserMail();
 
     $scope.toggleAddPopup = function() {

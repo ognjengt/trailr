@@ -62,5 +62,12 @@ namespace Trailr.Helpers
             await ProjectCollection.InsertOneAsync(p);
             return true;
         }
+
+        public async Task<Project> GetProject(string id)
+        {
+            ObjectId obId = ObjectId.Parse(id);
+            Project project = await ProjectCollection.Find(x => x.Id == obId).SingleAsync();
+            return project;
+        }
     }
 }
