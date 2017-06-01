@@ -89,6 +89,32 @@ a {
     color: #a1b4ff;
     border-radius: 0px 0px 3px 3px; }
 
+header {
+  width: 100%;
+  height: 200px;
+  background: #1D1E31;
+  text-align: center;
+  padding-top: 50px; }
+
+.stopwatch {
+  width: 500px;
+  height: 500px;
+  margin-left: 50%;
+  margin-right: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 4px solid #6E8BFF;
+  text-align: center;
+  padding-top: 180px;
+  color: #6E8BFF;
+  font-size: 5em;
+  cursor: pointer;
+  transition: 0.2s ease; }
+
+.stopwatch:hover {
+  color: #483af9;
+  border: 4px solid #483af9; }
+
 * {
   font-family: 'Montserrat', sans-serif !important; }
 
@@ -101,5 +127,8 @@ input {
   border: none !important;
   background: #92a8ff !important;
   color: #fff !important; }
+
+.no-margin {
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=main.css.map */

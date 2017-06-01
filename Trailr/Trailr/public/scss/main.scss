@@ -3,6 +3,7 @@
 @import "components/dashboard";
 @import "components/_buttons.scss";
 @import "components/_popups.scss";
+@import "components/_project.scss";
 
 *{
     font-family: 'Montserrat', sans-serif !important;
@@ -16,4 +17,7 @@ input{
   border: none !important;
   background: lighten($purple,7) !important;
   color: #fff !important
+}
+.no-margin{
+  margin-bottom: 0;
 }

@@ -11,7 +11,7 @@
         id = Html.ViewContext.RouteData.Values["id"].ToString();
         <div ng-app="App" ng-controller="ProjectController">
             <!--Nav bar-->
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default no-margin">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -27,7 +27,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#"><b>Projects</b> <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Dashboard"><b>Projects</b> <span class="sr-only">(current)</span></a></li>
                             <li><a href="#"><b>Drugi</b></a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
@@ -38,7 +38,13 @@
                 </div><!-- /.container-fluid -->
             </nav>
             
-            {{project | json}}
+            <header>
+                <h1>{{project.Title}}</h1>
+            </header>
+
+            <div class="stopwatch">
+                {{project.TimeSpent}}
+            </div>
         </div>
     }
     catch (Exception)
