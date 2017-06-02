@@ -42,9 +42,10 @@
                 <h1>{{project.Title}}</h1>
             </header>
 
-            <div class="stopwatch">
+            <div class="stopwatch" ng-click="handleStopwatch()">
                 {{project.TimeSpent}}
             </div>
+            {{time}}
         </div>
     }
     catch (Exception)
