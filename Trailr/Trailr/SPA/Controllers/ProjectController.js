@@ -41,6 +41,7 @@ var ProjectController = function ($scope,$http,$location,$interval) {
                     // Dodaj 0
                     $scope.project.MinutesSpent = $scope.project.MinutesSpent.pad();
                     if($scope.project.MinutesSpent == 60) {
+                        $scope.project.MinutesSpent = 0;
                         $scope.project.HoursSpent++;
                         // Dodaj 0
                         $scope.project.HoursSpent = $scope.project.HoursSpent.pad();
