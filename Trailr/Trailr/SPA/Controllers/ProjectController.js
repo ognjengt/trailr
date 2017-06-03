@@ -6,12 +6,14 @@ var ProjectController = function ($scope,$http,$location,$interval) {
 
     $scope.project = {};
     $scope.stopwatchActivated = false;
-    $scope.time = 0;
 
     function getProjectInfo() {
       id = $location.$$absUrl.substring($location.$$absUrl.indexOf('/Project/'),$location.$$absUrl.length).replace('/Project/','');
       $http.get('/api/Projects/GetProjectInfo/?id='+id).then(function(response) {
         $scope.project = response.data;
+        $scope.project.HoursSpent = $scope.project.HoursSpent.pad();
+        $scope.project.MinutesSpent = $scope.project.MinutesSpent.pad();
+        $scope.project.SecondsSpent = $scope.project.SecondsSpent.pad();
       })
     }
 
@@ -30,7 +32,20 @@ var ProjectController = function ($scope,$http,$location,$interval) {
         console.log($scope.stopwatchActivated);
         if($scope.stopwatchActivated) {
             timer = $interval(function(){
-                $scope.time++;
+                $scope.project.SecondsSpent++;
+                // Dodaj 0
+                $scope.project.SecondsSpent = $scope.project.SecondsSpent.pad();
+                if($scope.project.SecondsSpent == 60) {
+                    $scope.project.SecondsSpent = 0;
+                    $scope.project.MinutesSpent++;
+                    // Dodaj 0
+                    $scope.project.MinutesSpent = $scope.project.MinutesSpent.pad();
+                    if($scope.project.MinutesSpent == 60) {
+                        $scope.project.HoursSpent++;
+                        // Dodaj 0
+                        $scope.project.HoursSpent = $scope.project.HoursSpent.pad();
+                    }
+                }
             },1000)
         }
         else {

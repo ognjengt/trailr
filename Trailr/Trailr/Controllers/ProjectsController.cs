@@ -30,7 +30,7 @@ namespace Trailr.Controllers
         [ActionName("AddProject")]
         public async Task<IEnumerable<Project>> AddProject([FromBody]ProjectRequest prequest)
         {
-            Project p = new Project() { Title = prequest.Title, Id = new MongoDB.Bson.ObjectId(), DateCreated = DateTime.Now, TimeSpent = new TimeSpan(0, 0, 0), UserEmail = prequest.UserEmail };
+            Project p = new Project() { Title = prequest.Title, Id = new MongoDB.Bson.ObjectId(), DateCreated = DateTime.Now, HoursSpent = 0, MinutesSpent = 0, SecondsSpent = 0, UserEmail = prequest.UserEmail };
             await database.AddProject(p);
             List<Project> povratna = await database.GetProjects(prequest.UserEmail);
             return povratna;
@@ -39,6 +39,7 @@ namespace Trailr.Controllers
         [ActionName("GetProjectInfo")]
         public async Task<Project> GetProjectInfo(string id)
         {
+            // TODO ako userEmail od projekta ne odgovara userMailu od korisnika sa trenutne sesije, bacaj View da ne moze da otvori
             Project p = await database.GetProject(id);
             return p;
         }

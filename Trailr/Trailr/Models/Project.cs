@@ -11,7 +11,9 @@ namespace Trailr.Models
     {
         public ObjectId Id { get; set; }
         public string Title { get; set; }
-        public TimeSpan TimeSpent { get; set; }
+        public int HoursSpent { get; set; }
+        public int MinutesSpent { get; set; }
+        public int SecondsSpent { get; set; }
         public DateTime DateCreated { get; set; }
         public string UserEmail { get; set; }
     }

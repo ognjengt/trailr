@@ -18,6 +18,13 @@
         <script src="~/public/js/angular.min.js"></script>
         <script src="~/public/js/angular-route.min.js"></script>
 
+        <script>
+            Number.prototype.pad = function(size) {
+                var s = String(this);
+                while (s.length < (size || 2)) {s = "0" + s;}
+                return s;
+            }
+        </script>
         <script src="~/SPA/Controllers/MainController.js"></script>
         <script src="~/SPA/Controllers/ProjectController.js"></script>
         <script src="~/SPA/app.js"></script>
