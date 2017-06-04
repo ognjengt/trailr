@@ -6,6 +6,11 @@
 
     function getProjects(email) {
         $http.get('/api/Projects/GetProjects/?email='+email).then(function(response) {
+            response.data.forEach(function(project) {
+                project.HoursSpent = project.HoursSpent.pad();
+                project.MinutesSpent = project.MinutesSpent.pad();
+                project.SecondsSpent = project.SecondsSpent.pad();
+            });
             $scope.projects = response.data;
             localStorage.setItem('projects', JSON.stringify($scope.projects));
         })

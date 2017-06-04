@@ -44,5 +44,13 @@ namespace Trailr.Controllers
             return p;
         }
 
+        [HttpPost]
+        [ActionName("UpdateProject")]
+        public async Task<bool> UpdateProject([FromBody]UpdateProjectRequest upreq)
+        {
+            bool updated = await database.UpdateProject(upreq.Id,upreq.HoursPassed,upreq.MinutesPassed,upreq.SecondsPassed);
+            return updated;
+        }
+
     }
 }

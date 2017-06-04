@@ -40,6 +40,22 @@ var ProjectController = function ($scope,$http,$location,$interval) {
                     $scope.project.MinutesSpent++;
                     // Dodaj 0
                     $scope.project.MinutesSpent = $scope.project.MinutesSpent.pad();
+
+                    // Update the database every minute
+                    var updateReq = {
+                        Id: $scope.project.Id,
+                        HoursPassed: parseInt($scope.project.HoursSpent),
+                        MinutesPassed: parseInt($scope.project.MinutesSpent),
+                        SecondsPassed: parseInt($scope.project.SecondsSpent)
+                    };
+                    $http.post('/api/Projects/UpdateProject',JSON.stringify(updateReq),{
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(function(response) {
+                        //console.log(response);
+                    });
+
                     if($scope.project.MinutesSpent == 60) {
                         $scope.project.MinutesSpent = 0;
                         $scope.project.HoursSpent++;
@@ -51,6 +67,22 @@ var ProjectController = function ($scope,$http,$location,$interval) {
         }
         else {
             $interval.cancel(timer);
+
+            // Update the database on timer stop.
+            var updateReq = {
+                Id: $scope.project.Id,
+                HoursPassed: parseInt($scope.project.HoursSpent),
+                MinutesPassed: parseInt($scope.project.MinutesSpent),
+                SecondsPassed: parseInt($scope.project.SecondsSpent)
+            };
+            $http.post('/api/Projects/UpdateProject',JSON.stringify(updateReq),{
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function(response) {
+                console.log(response);
+            });
+
         }
 
     }

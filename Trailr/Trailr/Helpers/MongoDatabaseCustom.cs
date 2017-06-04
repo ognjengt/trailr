@@ -69,5 +69,13 @@ namespace Trailr.Helpers
             Project project = await ProjectCollection.Find(x => x.Id == obId).SingleAsync();
             return project;
         }
+
+        public async Task<bool> UpdateProject(string id, int hoursPassed, int minutesPassed, int secondsPassed)
+        {
+            var filter = Builders<Project>.Filter.Eq("Id",ObjectId.Parse(id));
+            var update = Builders<Project>.Update.Set("HoursSpent", hoursPassed.ToString()).Set("MinutesSpent", minutesPassed.ToString()).Set("SecondsSpent", secondsPassed.ToString());
+            var result = await ProjectCollection.UpdateOneAsync(filter, update);
+            return true;
+        }
     }
 }
