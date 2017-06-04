@@ -1,4 +1,4 @@
 # trailr
 Time tracking software. Work in progress.
 
-ASP.NET + AngularJS project.
+AngularJS + ASP.NET Web Api 2 + MongoDB project.
